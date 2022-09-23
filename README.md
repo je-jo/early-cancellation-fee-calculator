@@ -1,5 +1,3 @@
-//this is for the public version
-
 # README - Early Cancellation Fee Calculator
 
 A calculator of early cancellation fee for a broadband. Built with vanilla JavaScript and used in real world. :)

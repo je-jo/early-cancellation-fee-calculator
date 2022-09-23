@@ -226,9 +226,9 @@ let totalDaysLeft = () => contractLength - totalDaysPassed();
 // 04. format and display days
 
 let formattedDaysPassed = () =>
-    `${Math.floor(totalDaysPassed() / 30)} m i ${totalDaysPassed() % 30} d`;
+    `${Math.floor(totalDaysPassed() / 30)} m and ${totalDaysPassed() % 30} d`;
 let formattedDaysLeft = () =>
-    `${Math.floor(totalDaysLeft() / 30)} m i ${totalDaysLeft() % 30} d`;
+    `${Math.floor(totalDaysLeft() / 30)} m and ${totalDaysLeft() % 30} d`;
 
 const displayDateStart = document.querySelector("#date-start");
 const displayTimePassed = document.querySelector("#time-passed");
@@ -490,7 +490,7 @@ function calculateCustom() { //calculates all custom entries and builds output s
             (customDays[i].value * (customPrice[i].value / 30));
         customOutput[i].textContent = formatPrice(customCalcPrice[i]);
         if (customMonths[i].value && customDays[i].value) { //builds string 
-            outputStringCustom += `MISC. ${+customPrice[i].value} x ${customMonths[i].value} m i ${customDays[i].value} d + `;
+            outputStringCustom += `MISC. ${+customPrice[i].value} x ${customMonths[i].value} m and ${customDays[i].value} d + `;
         }
         if (customMonths[i].value && !customDays[i].value) {
             outputStringCustom += `MISC. ${+customPrice[i].value} x ${customMonths[i].value} m + `;
@@ -520,7 +520,7 @@ let customDaysPassed = () => calculateDays(setStartDay(dateInputStart), setStart
     setStartYear(dateInputStart), setStartYear(dateInputCustom));
 
 let formattedCustomDaysPassed = () =>
-    `${Math.floor(customDaysPassed() / 30)} m i ${customDaysPassed() % 30} d`;
+    `${Math.floor(customDaysPassed() / 30)} m and ${customDaysPassed() % 30} d`;
 const displayCustomTimePassed = document.querySelector("#custom-time-passed");
 
 
