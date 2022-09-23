@@ -1,0 +1,386 @@
+/*
+01 reset
+02 theme
+03 layout
+04 typography
+05 wrappers, labels and info
+06 cards
+07 input
+08 buttons
+09 the list
+*/
+
+/* reset */
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:focus {
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 2px;
+    transition: var(--transition);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* theme */
+
+:root {
+    --clr-primary: #ef6155;
+    --clr-primary-hover: #f72f1d;
+    --clr-secondary: #5bc4bf;
+    --clr-secondary-hover: #32b8b1;
+    --clr-hover: #eaecdf;
+    --clr-bg: #f1f2ed;
+    --clr-body: #41323f;
+    --clr-white: #fff;
+    --clr-grey: #b9b6b0;
+    --border-radius: 8px;
+    --fw-strong: 600;
+    --fs-h1: 4rem;
+    --fs-h2: 3.15rem;
+    --fs-h3: 2rem;
+    --fs-p: 1.15rem;
+    --fs-small: 0.95rem;
+    --box-shadow: 0 3px 5px rgba(0, 0, 0, 0.28);
+    --transition: ease-out .05s;
+    --ff-normal: 'Inter', sans-serif;
+    --ff-code: 'Ubuntu Mono', monospace;
+}
+
+/* layout */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    font-family: var(--ff-normal);
+    font-size: 100%;
+    background-color: var(--clr-bg);
+    color: var(--clr-body);
+}
+
+header {
+    display: grid;
+    width: 100%;
+    min-height: 8vh;
+    place-content: center;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
+    background-color: var(--clr-body);
+    color: var(--clr-white);
+}
+
+main {
+    padding: 5vh 0;
+    width: 90%;
+}
+
+section+section {
+    margin-top: 2rem;
+}
+
+hr {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 2vh 0;
+    text-align: center;
+    background-color: var(--clr-body);
+    color: var(--clr-white);
+}
+
+/* typography */
+
+h1,
+h2,
+h3 {
+    font-weight: var(--fw-strong);
+    line-height: 1.15;
+    margin: 0.65em 0;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+h1 {
+    font-size: var(--fs-h1); 
+    font-size: min(max(3rem, 5vw), var(--fs-h1));
+}
+
+
+h2 {
+    font-size: var(--fs-h2); 
+    font-size: min(max(2.5rem, 4.5vw), var(--fs-h2));
+}
+
+h3 {
+    font-size: var(--fs-h3); 
+    font-size: min(max(1.5rem, 2.5vw), var(--fs-h3));
+}
+
+p,
+label {
+    font-size: var(--fs-p); 
+    font-size: min(max(0.9rem, 1.5vw), var(--fs-p));
+}
+
+li,
+.wrapper--checkbox>label,
+.btn--remove {
+    font-size: min(max(0.55rem, 1vw), var(--fs-p));
+}
+
+.info {
+    font-size: var(--fs-small);
+    font-size: min(max(0.7rem, 1.3vw), var(--fs-small));
+}
+
+.strong {
+    font-weight: var(--fw-strong);
+}
+
+main p {
+    margin: 0 0 1rem;
+}
+
+a {
+    color: inherit;
+}
+
+.output {
+    font-family: var(--ff-code);
+    font-size: var(--fs-lead);
+    font-weight: var(--fw-strong);
+    padding: 0 0.5rem;
+    text-decoration: underline;
+    text-decoration-color: var(--clr-grey);
+    text-decoration-thickness: 5px;
+    text-underline-offset: 3px;
+}
+
+
+
+
+
+/*wrappers, labels and info */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(258px, 40%), 1fr));
+    padding: clamp(1em, 3%, 1.5em);
+    gap: clamp(1em, 4vmax, 2em);
+} 
+
+.wrapper--card {
+    grid-auto-rows: 0.5fr; /* so the long cards don't dictate the container height */
+}
+
+.wrapper--label {
+    line-height: 1.1;
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: 1.5em;
+    align-items: center;
+    border-bottom: 1px dotted var(--clr-grey);
+}
+
+.wrapper--date {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+}
+    
+.wrapper--checkbox {
+    display: grid;
+    grid-template-columns: 1ch auto 8ch 2ch 8ch;
+    align-items: center;
+    padding: 0.2em;
+    gap: 2em;
+    border-bottom: 1px dotted var(--clr-grey);
+}
+
+.wrapper--checkbox>label {
+    text-transform: capitalize;
+}
+
+.wrapper--custom {
+    display: grid;
+    grid-template-columns: 1fr 2ch 2ch 1fr 0.2fr;
+    align-items: center;
+    padding: 0.2em;
+    gap: 2em;
+    border-bottom: 1px dotted var(--clr-grey);
+}
+
+.wrapper--custom>button {
+    margin: 0;
+}
+
+.wrapper--output {
+    grid-template-columns: 1fr;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    border: 4px dashed var(--clr-primary);
+    border-radius: 15px;
+}
+
+#output--final {
+    white-space: pre-wrap;
+    resize: none;
+    font-size: var(--fs-p);
+    background-color: inherit;
+    padding: 1.5rem;
+    font-weight: normal;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: text;
+}
+
+/* cards */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    gap: 1em;
+    border-radius: var(--border-radius);
+    background-color: var(--clr-white);
+    box-shadow: var(--box-shadow);
+}
+
+.card--wide {
+    grid-row: span 2;
+}
+
+.card--long {
+    overflow-y: auto;
+}
+
+/* input */
+
+input {
+    margin: 0.5em 0;
+    padding: 0.5em 0.8em;
+    text-align: center;
+    border: 1px solid currentColor;
+    border-radius: 0.25em;
+}
+
+select {
+    padding: 0.5em 0.8em;
+    margin: 0;
+    width: 100%;
+    min-width: 15ch;
+    background-color: transparent;
+    border: 1px solid currentColor;
+    border-radius: 0.25em;
+}
+
+input[type="text"] {
+    width: 2ch;
+    padding: 0.2em 0.3em;
+}
+
+input[type="date"],
+.wrapper--custom>input[type="text"] {
+    width: 94%;
+    justify-self: center;
+}
+
+/* buttons */
+
+.btn {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 44px;
+    margin: 2em auto;
+    padding: 0.25em 1em;
+    transition: var(--transition);
+    border: 2px solid currentColor;
+    border-radius: var(--border-radius);
+    background-color: var(--clr-primary);
+    color: var(--clr-white);
+    font-size: 1.125rem;
+    line-height: 1.1;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--clr-primary-hover);
+    outline: 2px solid var(--clr-primary);
+    outline-offset: 2px;
+    transition: var(--transition);
+}
+
+.btn--final {
+    /* width: 100%; */
+    place-self: end;
+    margin: 0;
+}
+
+.btn--clear {
+    background-color: var(--clr-secondary);
+    width: 97%;
+}
+
+.btn--clear:hover {
+    background-color: var(--clr-secondary-hover);
+    outline-color: var(--clr-secondary-hover);
+}
+
+.btn--alt {
+    width: auto;
+    background-color: transparent;
+    color: var(--clr-primary);
+    border-color: var(--clr-primary);
+}
+
+.btn--alt:hover {
+    color: var(--clr-white);
+}
+
+.btn--remove {
+    font-size: min(max(0.55rem, 1vw), var(--fs-p));
+    padding: clamp(1em, 3%, 1.5em);
+    min-height: unset;
+}
+
+/* the list */
+
+.container>li:nth-child(odd) {
+    background-color: var(--clr-bg);
+}
+
+.container>li:not(:first-child):hover {
+    background-color: var(--clr-hover);
+}

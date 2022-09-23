@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Ubuntu+Mono&display=swap"
+        rel="stylesheet">
+    <script src="assets/js/script.js" defer></script>
+    <title>Early Cancellation Fee Calculator</title>
+</head>
+
+<body>
+    <header>
+        <h1>Early Cancellation Fee Calculator</h1>
+    </header>
+
+    <main>
+        <form method="get">
+            <section>
+                <h2>General</h2>
+                <div class="wrapper wrapper--card">
+                    <div class="card card--wide">
+
+                        <h3>Dates:</h3>
+                        <label for="date-start-contract" class="wrapper--date">Please enter contract start date and
+                            press OK:
+                            <input type="date" id="date-start-contract">
+                        </label>
+                        <label for="length" class="wrapper--label">
+                            <input type="checkbox" id="length">
+                            12-Month Plan?
+                        </label>
+                        <button class="btn btn--date" type="button">OK</button>
+
+                        <p>Contract start date: <span class="output" id="date-start"></span></p>
+                        <p>Today: <span class="output" id="date-today"></span></p>
+
+                        <h3>Rate plan:</h3>
+                        <select name="rate-plan" id="rp-current">
+                            <option value="" selected disabled>Choose:</option>
+                        </select>
+                        <p>Monthly Charge: <span class="output" id="rp-price"></span></p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Benefits:</h3>
+                        <p>Months completed: <span class="output" id="time-passed"></span></p>
+                        <p>Total benefits: <span class="output" id="total-benefits"></span></p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Time left</h3>
+                        <p>Months remaining in term: <span class="output" id="time-left"></span></p>
+                        <p>Total payments left: <span class="output" id="total-left"></span></p>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <h2>Benefits</h2>
+                <div class="wrapper wrapper--card">
+
+                    <div class="card card--wide">
+                        <h3>Price reduction:</h3>
+                        <p>Price reduction type:</p>
+
+                        <select name="reduction-type" id="reduction-type">
+                            <option value="" selected disabled>Choose:</option>
+                            <option value="one">1 euro</option>
+                            <option value="prev">Previous RP Price</option>
+                            <option value="percent">Percentage</option>
+                            <option value="ammount">Lowered Price</option>
+                            <option value="none">No reduction</option>
+                        </select>
+
+                        <select name="previous-rate-plan" id="rp-prev">
+                            <option value="" selected disabled>Choose previous rate plan:</option>
+                        </select>
+
+                        <div id="reduction-percent">
+                            <p>Percentage:</p>
+                            <div class="wrapper">
+                                <label for="5" class="wrapper--label">
+                                    <input type="radio" id="5" name="reduction-percent" value="0.05">
+                                    5 %</label>
+                                <label for="10" class="wrapper--label">
+                                    <input type="radio" id="10" name="reduction-percent" value="0.1">
+                                    10 %</label>
+                                <label for="15" class="wrapper--label">
+                                    <input type="radio" id="15" name="reduction-percent" value="0.15">
+                                    15 %</label>
+                                <label for="20" class="wrapper--label">
+                                    <input type="radio" id="20" name="reduction-percent" value="0.2">
+                                    20 %</label>
+                                <label for="30" class="wrapper--label">
+                                    <input type="radio" id="30" name="reduction-percent" value="0.3">
+                                    30 %</label>
+                                <label for="50" class="wrapper--label">
+                                    <input type="radio" id="50" name="reduction-percent" value="0.5">
+                                    50 %</label>
+                            </div>
+                        </div>
+
+                        <div id="reduction-ammount">
+                            <p>Lowered price:</p>
+                            <div class="wrapper">
+                                <label for="59.9" class="wrapper--label">
+                                    <input type="radio" id="59.9" name="reduction-ammount" value="59.9">
+                                    59,90 EUR</label>
+                                <label for="69.9" class="wrapper--label">
+                                    <input type="radio" id="69.9" name="reduction-ammount" value="69.9">
+                                    69,90 EUR</label>
+                                <label for="149.9" class="wrapper--label">
+                                    <input type="radio" id="149.9" name="reduction-ammount" value="149.9">
+                                    149,90 EUR</label>
+                                <label for="159.9" class="wrapper--label">
+                                    <input type="radio" id="159.9" name="reduction-ammount" value="159.9">
+                                    159,90 EUR</label>
+                                <label for="179.9" class="wrapper--label">
+                                    <input type="radio" id="179.9" name="reduction-ammount" value="179.9">
+                                    179,90 EUR</label>
+                                <label for="199.9" class="wrapper--label">
+                                    <input type="radio" id="199.9" name="reduction-ammount" value="199.9">
+                                    199,90 EUR</label>
+                            </div>
+                        </div>
+
+                        <p class="info strong">Enter months ONLY IF the reduction time has already passed.</p>
+                        <label for="reduction-time" class="wrapper--label">
+                            Months:<input type="text" id="reduction-time" class="multiplier"></label>
+
+                        <p class="info">Monthly price difference: <span id="reduction"></span></p>
+                        <p>Total price reduction benefit: <span id="total-reduction" class="output"></span></p>
+
+                        <hr>
+
+                        <h3>Enter custom ammount</h3>
+                        <p class="info strong">Use only for non-standard benefits!</p>
+                        <p class="info">Here you can calculate the benefits which are not included in the app, or have
+                            ended prematurely. Enter the price, months and days. For calculating months and days, you
+                            can use
+                            the calendar below.
+                        </p>
+                        <p class="info">The custom entries are added to the end of the report as "MISC.". You can edit
+                            the name of the benefit in the report.</p>
+                        <ul>
+                            <li class="wrapper wrapper--custom strong">
+                                <div>Price</div>
+                                <div>M</div>
+                                <div>D</div>
+                                <div>Calculated</div>
+                                <div>Delete row</div>
+                            </li>
+                        </ul>
+
+                        <ul id="section--custom" class="container"></ul>
+                        <button class="btn btn--add btn--alt" type="button">Add row / Calculate</button>
+                        <p>Total custom: <span class="output" id="total-custom"></span></p>
+
+                        <hr>
+
+                        <p class="info">This calendar calculates months and days from the start of the contract to the
+                            entered custom date when the benefit ended prematurely. The results are not used in
+                            any calculation, you must manually enter the months and days in the text fields above.
+                        </p>
+
+                        <label for="custom-date-input" class="wrapper--date">Enter custom date and press OK:
+                            <input type="date" id="custom-date-input">
+                        </label>
+
+                        <button class="btn btn--custom-date btn--alt" type="button">OK</button>
+                        <p>Custom time passed: <span class="output" id="custom-time-passed"></span></p>
+                    </div>
+
+                    <div class="card card--long">
+                        <h3>Extra channels:</h3>
+                        <p class="info">* Channels' prices are multiplied by the number of completed months and days,
+                            unless
+                            you manually enter the number of Months the customer had extra channels.</p>
+                        <p class="info strong">Enter Months ONLY IF the free channels period has ended!</p>
+                        <p>Total channels: <span class="output" id="total-channels"></span></p>
+                        <ul id="channels" class="container">
+                            <li class="wrapper wrapper--checkbox strong">
+                                <div class="checkbox"></div>
+                                <div>Name</div>
+                                <div>Price</div>
+                                <div>M*</div>
+                                <div>Total</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card card--long">
+                        <h3>Hardware:</h3>
+                        <p class="info">* Hardware prices are multiplied by 1, unless you entered the Ammount of devices
+                            of same type.</p>
+                        <p class="info">For devices that are payed for on a montly basis, the "rent" price is
+                            multiplied by the number of completed months and days, and by the number of devices of same
+                            type, if the Ammount is entered.</p>
+                        <p class="info strong">
+                            Enter Ammount ONLY IF the customer has multiple devices of the same type!</p>
+                        <p>Total hardware: <span class="output" id="total-hardware"></span></p>
+                        <ul id="hardware" class="container">
+                            <li class="wrapper wrapper--checkbox strong">
+                                <div class="checkbox"></div>
+                                <div>Name</div>
+                                <div>Price</div>
+                                <div>A*</div>
+                                <div>Total</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <section>
+                <h2>Report</h2>
+                <div class="wrapper wrapper--output">
+                    <textarea id="output--final" class="output">...</textarea>
+                    <button class="btn btn--final" type="button">Generate report</button>
+                </div>
+                <button class="btn btn--clear" type="button">Clear all entries</button>
+            </section>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>Coded by <a href="https://github.com/je-jo">Jelena Jovičić</a>, 2022.</p>
+    </footer>
+
+</body>
+
+</html>
