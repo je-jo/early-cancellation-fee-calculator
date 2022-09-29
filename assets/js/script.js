@@ -584,7 +584,7 @@ inputText.forEach((textbox) => {
     textbox.addEventListener("change", function (e) {
         hasValue(e, productPackages);
         displayElementPrice(displaySinglePP, productPackages);
-        hasValue(e, hardwareItems);
+        hasMulti(e);
         displayElementPrice(displaySingleHW, hardwareItems);
         updateDisplayBenefits();
     });

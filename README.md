@@ -1,6 +1,6 @@
 # README - Early Cancellation Fee Calculator
 
-A calculator of early cancellation fee for a broadband. Built with vanilla JavaScript and used in real world. :)
+A calculator of early cancellation fee for a broadband. Built with vanilla JavaScript and used in the real world. :)
 
 This repo features dummy rate plans, silly product packages and ridiculous prices. It's built to be super easy to add your own products, should you wish to use this calculator for your purposes.
 
@@ -28,15 +28,15 @@ Cancelling service while still within the minimum contractual term may result in
 - Add up all the benefits that customer got by signing the contract. These may include price reduction, extra channels, free device etc.
 - Multiply monthly subscription with the remaining number of months.
 
-This gives us two different ammounts. The lesser number is the actual fee the customer has to pay in case of early cancellation. If a customer hasn't received any benefits by signing the contract (so the first number is zero), the contract can be cancelled without any penalties.
+This gives us two different amounts. The lesser number is the actual fee the customer has to pay in case of early cancellation. If a customer hasn't received any benefits by signing the contract (so the first number is zero), the contract can be cancelled without any penalties.
 
-My company offers a big variety of benefits for signing a contract, so things can get quite complicated when calculating early cancellation fee, which is why I've build this app. With it, my team does the calculation about ten times faster than before. The app also generates a report for easily presenting the calculations to the customer.
+My company offers a big variety of benefits for signing a contract, so things can get quite complicated when calculating an early cancellation fee, which is why I've built this app. With it, my team does the calculation about ten times faster than before. The app also generates a report for easily presenting the calculations to the customer.
 
 ### Screenshot
 
 | ![](screenshot.png) |
 |:--:|
-| The version shown here is the actual version with real company data. The public version is in english and with dummy data.|
+| The version shown here is the actual version with real company data. The public version is in English and with dummy data.
 
 ### Links
 
@@ -45,21 +45,21 @@ My company offers a big variety of benefits for signing a contract, so things ca
 
 ### Features
 
-- The calculator works for 12 and 24 months contracts and is based on a 360-day calendar year with 12 30-day months.
+- The calculator works for 12 and 24 month contracts and is based on a 360-day calendar year with 12 30-day months.
 - Generates a report for easy presentation to the customer. The report is also editable.
-- Has built-in support for custom entries. If the customer has received a benefit that is not included in the app, or that has ended prematurely (happens because of system error), you can simply enter the ammount and the number of months and days. Such entries are added to the end of report as "MISC.". 
-- While the app is meant to be used in office setting, it is responsive, because I like the mobile-first approach. This means you can calculate your customers' fees on the go! :)
+- Has built-in support for custom entries. If the customer has received a benefit that is not included in the app, or that has ended prematurely (happens because of system error), you can simply enter the amount and the number of months and days. Such entries are added to the end of the report as "MISC.". 
+- While the app is meant to be used in an office setting, it is responsive, because I like the mobile-first approach. This means you can calculate your customers' fees on the go! :)
 
 ### Usage
 
 - Enter the contract start date. For 12-month contracts, tick the appropriate box, otherwise the app calculates 24-month contracts by default.
-- Choose a rate plan. The app automatically calculates total remainder of monthly paychecks.
+- Choose a rate plan. The app automatically calculates the total remainder of monthly paychecks.
 - If the customer has gained a price reduction benefit, choose a benefit type (percentage, previous rate plan price...).
 - If the customer has gained extra channels or other product package benefits, tick the appropriate boxes.
 - If the customer has gained a free device or other hardware related benefits, tick the appropriate boxes.
-- If the customer has gained a benefit not included in the app, enter the appropriate ammounts, months and days.
+- If the customer has gained a benefit not included in the app, enter the appropriate amounts, months and days.
 - After you have ticked all the benefits the customer gained, click "Generate Report" button. The report can be edited and copied.
-- To calculate next customer's fee, click "Clear all entries" and/or refresh the page.
+- To calculate the next customer's fee, click "Clear all entries" and/or refresh the page.
 
 ### Edit with your data
 
@@ -89,7 +89,7 @@ Substitute "item-name" with your product name (quoted, lower case, dashes instea
 
 ### Further development
 
-- Add the percentage and reduced price benefits in js file. Currently they are "hard-coded" in html and can only be edited from there.
+- Add the percentage and reduced price benefits in the js file. Currently they are "hard-coded" in html and can only be edited from there.
 - This might be a good candidate for a multi-step form.
 
 
