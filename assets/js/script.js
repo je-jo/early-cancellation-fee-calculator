@@ -584,7 +584,7 @@ inputText.forEach((textbox) => {
     textbox.addEventListener("change", function (e) {
         hasValue(e, productPackages);
         displayElementPrice(displaySinglePP, productPackages);
-        hasMulti(e);
+        hasValue(e, hardwareItems);
         displayElementPrice(displaySingleHW, hardwareItems);
         updateDisplayBenefits();
     });
@@ -603,7 +603,7 @@ function hasValue(e, arr) {
         if (elem.name === e.currentTarget.parentNode.firstElementChild.id) {
             if (e.currentTarget.value) {
                 elem.modifier = +e.currentTarget.value;
-                if (elem.modifier > totalDaysPassed() / 30) {
+                if ((elem.modifier > totalDaysPassed() / 30) && arr == productPackages) { //error out for channels, not for hardware
                     alert("Wrong entry! The benefit is still active.");
                     e.currentTarget.value = ""; //clear wrong value
                     elem.modifier = null;
